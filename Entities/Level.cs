@@ -29,6 +29,8 @@ public class Level {
     public void LevelUp() {
         this.level += 1;
         this.experience.clear(this.level);
+
+        (new LevelUpEvent(this)).emit();
     }
 
     //====================================================//
@@ -45,6 +47,8 @@ public class Level {
 
     public void addExperience(int xp) {
         this.experience.add(xp);
+
+        (new ExperienceAddEvent(this.experience)).emit();
     }
 
     public bool LevelUpAvaliable() {
